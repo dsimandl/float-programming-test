@@ -20,6 +20,21 @@
  *   input: ''
  *   returns: false
  */
-module.exports = ( input ) => {
-
+module.exports = (input) => {
+    let stack = new Array();
+    for (let token of input) {
+        if (token === '(') {
+            stack.push(token);
+        } else if (token === ')') {
+            if (stack.length === 0) {
+                return false;
+            } else {
+                let left = stack.pop();
+                if (token === ')' && left === '(') {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 };
