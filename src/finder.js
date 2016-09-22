@@ -14,5 +14,11 @@
  * 
  */
 module.exports = ( input, test ) => {
-
+    let matches = new Array()
+    for(let val of input) {
+        if(typeof val === 'string' && test(val)) {
+            matches.push(val)
+        }
+    }
+    return matches;
 };
